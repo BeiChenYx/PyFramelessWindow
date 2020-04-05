@@ -1,0 +1,60 @@
+#windowFrame{
+	border: 2px solid rgb(194, 194, 194);
+	gridline-color: rgb(194, 194, 194);
+	border-radius: 1px 1px 1px 1px;
+	background-color: palette(Window);
+}
+#windowTitlebar{
+	border: 0px none palette(base);
+	border-top-left-radius:2px;
+	border-top-right-radius:2px;
+	background-image: url(:/images/6.png);
+	background-color: #237fca;
+	color: #ffffff;
+}
+#windowTitlebar QToolButton{
+	background-color:none;
+  	border:none;
+  	width:16px;
+  	height:16px;
+ 	padding: 4px;
+	border-top-right-radius: 5px;
+}
+#windowTitlebar QToolButton:hover{
+	background-color: #2e9eea;
+}
+#windowTitlebar QToolButton:pressed{
+	background-color:palette(highlight);
+}
+#windowTitlebar #toolButton_close{
+	image: url(:/images/icon_window_close.png);
+}
+#windowTitlebar #toolButton_close:hover{
+	background-color: #DC0000;
+}
+#windowTitlebar #toolButton_close:pressed{
+	background-color: #F1707A;
+}
+#toolButton_max{
+	image: url(:/images/icon_window_maximize.png);
+}
+#toolButton_restore{
+	image: url(:/images/icon_window_restore.png);
+}
+#toolButton_min{
+	image: url(:/images/icon_window_minimize.png);
+}
+#toolButton_full{
+	image: url(:/images/fullscreen.png);
+}
+#toolButton_full_exit{
+	image: url(:/images/fullscreen_exit.png);
+}
+#toolButton_data{
+	image: url(:/images/data.png);
+}
+#label_title{
+	color: #ffffff;
+	font-weight:bold;
+	font-size:16px;
+}
