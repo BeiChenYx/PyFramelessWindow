@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>images/qt_zh_CN.qm</file>
     <file>images/data.png</file>
     <file>images/logo.png</file>
     <file>images/6.png</file>

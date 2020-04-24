@@ -2,10 +2,10 @@ import platform
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from PyQt5.QtCore import Qt, QEvent, QRect, QPoint
-from PyQt5.QtGui import QColor, QPalette
-from PyQt5.QtWidgets import qApp, QWidget
+from PyQt5.QtGui import QColor, QPalette, QIcon
+from PyQt5.QtWidgets import qApp, QWidget, QHBoxLayout
 
-from .ui_framelesswidget import Ui_FramelessWidget
+from ui.FrameLessWidget.ui_framelesswidget import Ui_FramelessWidget
 
 
 class FrameLessWidget(QtWidgets.QWidget, Ui_FramelessWidget):
@@ -39,7 +39,7 @@ class FrameLessWidget(QtWidgets.QWidget, Ui_FramelessWidget):
 
     def init_qss(self):
         """ 初始化样式 """
-        with open("./ui/sheet.css", 'r', encoding="utf-8") as fi:
+        with open("./ui/FrameLessWidget/sheet.css", 'r', encoding="utf-8") as fi:
             sheet = fi.read()
             self.setStyleSheet(sheet)
 
@@ -68,12 +68,17 @@ class FrameLessWidget(QtWidgets.QWidget, Ui_FramelessWidget):
 
     def set_window_title(self, title):
         self.label_title.setText(title)
+        self.setWindowTitle(title)
 
-    def set_window_icon(self, ico: QtGui.QIcon):
+    def set_window_icon(self, ico: QIcon):
         self.label_icon.setPixmap(ico.pixmap(24, 24))
+        self.setWindowIcon(ico)
 
     def set_content(self, w: QtWidgets.QWidget):
-        self.windowContent.layout().addWidget(w)
+        h_layout = QHBoxLayout()
+        h_layout.addWidget(w)
+        h_layout.setContentsMargins(0, 0, 0, 0)
+        self.windowContent.setLayout(h_layout)
 
     def style_window(self, active, no_state):
         """ 设置UI风格 """

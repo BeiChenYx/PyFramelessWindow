@@ -14,26 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#widget_left_nav{
-	background-color:  #f2f2f2;
-}
-
-QStatusBar{
-	background-color: #237fca;
-}
-
-QStatusBar::item{
-	border: none;
-}
-QToolButton{
-	background-color:none;
-  	border:none;
-  	width:16px;
-  	height:16px;
- 	padding: 4px;
-	border-top-right-radius: 5px;
-}
-</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -82,7 +63,7 @@ QToolButton{
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="images.qrc"/>
+  <include location="FrameLessWidget/images.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -1,0 +1,103 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file '.\CustomModelView\horizontalHeaderView.ui'
+#
+# Created by: PyQt5 UI code generator 5.14.1
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_CustomHeaderView(object):
+    def setupUi(self, CustomHeaderView):
+        CustomHeaderView.setObjectName("CustomHeaderView")
+        CustomHeaderView.resize(80, 26)
+        CustomHeaderView.setAutoFillBackground(False)
+        CustomHeaderView.setStyleSheet("")
+        self.gridLayout = QtWidgets.QGridLayout(CustomHeaderView)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setSpacing(0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.widget_header = QtWidgets.QWidget(CustomHeaderView)
+        self.widget_header.setMouseTracking(False)
+        self.widget_header.setObjectName("widget_header")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.widget_header)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_2.setSpacing(0)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_title = QtWidgets.QLabel(self.widget_header)
+        self.label_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_title.setObjectName("label_title")
+        self.horizontalLayout.addWidget(self.label_title)
+        self.toolButton_filter = QtWidgets.QToolButton(self.widget_header)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.toolButton_filter.sizePolicy().hasHeightForWidth())
+        self.toolButton_filter.setSizePolicy(sizePolicy)
+        self.toolButton_filter.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/images/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton_filter.setIcon(icon)
+        self.toolButton_filter.setIconSize(QtCore.QSize(16, 16))
+        self.toolButton_filter.setCheckable(True)
+        self.toolButton_filter.setAutoExclusive(True)
+        self.toolButton_filter.setAutoRaise(False)
+        self.toolButton_filter.setObjectName("toolButton_filter")
+        self.buttonGroup = QtWidgets.QButtonGroup(CustomHeaderView)
+        self.buttonGroup.setObjectName("buttonGroup")
+        self.buttonGroup.addButton(self.toolButton_filter)
+        self.horizontalLayout.addWidget(self.toolButton_filter)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.toolButton_sortUp = QtWidgets.QToolButton(self.widget_header)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.toolButton_sortUp.sizePolicy().hasHeightForWidth())
+        self.toolButton_sortUp.setSizePolicy(sizePolicy)
+        self.toolButton_sortUp.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/images/sort_up.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton_sortUp.setIcon(icon1)
+        self.toolButton_sortUp.setIconSize(QtCore.QSize(8, 8))
+        self.toolButton_sortUp.setCheckable(True)
+        self.toolButton_sortUp.setAutoExclusive(True)
+        self.toolButton_sortUp.setObjectName("toolButton_sortUp")
+        self.buttonGroup.addButton(self.toolButton_sortUp)
+        self.verticalLayout.addWidget(self.toolButton_sortUp)
+        self.toolButton_sortDown = QtWidgets.QToolButton(self.widget_header)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.toolButton_sortDown.sizePolicy().hasHeightForWidth())
+        self.toolButton_sortDown.setSizePolicy(sizePolicy)
+        self.toolButton_sortDown.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/images/sort_down.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton_sortDown.setIcon(icon2)
+        self.toolButton_sortDown.setIconSize(QtCore.QSize(8, 8))
+        self.toolButton_sortDown.setCheckable(True)
+        self.toolButton_sortDown.setAutoExclusive(True)
+        self.toolButton_sortDown.setObjectName("toolButton_sortDown")
+        self.buttonGroup.addButton(self.toolButton_sortDown)
+        self.verticalLayout.addWidget(self.toolButton_sortDown)
+        self.horizontalLayout.addLayout(self.verticalLayout)
+        self.horizontalLayout.setStretch(0, 1)
+        self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget_header, 0, 0, 1, 1)
+
+        self.retranslateUi(CustomHeaderView)
+        QtCore.QMetaObject.connectSlotsByName(CustomHeaderView)
+
+    def retranslateUi(self, CustomHeaderView):
+        _translate = QtCore.QCoreApplication.translate
+        CustomHeaderView.setWindowTitle(_translate("CustomHeaderView", "Form"))
+        self.label_title.setText(_translate("CustomHeaderView", "***"))
+import images_rc
