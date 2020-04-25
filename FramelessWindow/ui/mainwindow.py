@@ -1,14 +1,15 @@
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
-from PyQt5.QtCore import Qt, QEvent, QRect, QPoint
+from PyQt5.QtCore import Qt, QEvent, QRect, QPoint, QModelIndex, QSortFilterProxyModel
 from PyQt5.QtGui import QColor, QPalette
 from PyQt5.QtWidgets import (qApp, QWidget, QMainWindow,
                              QToolButton, QSizePolicy, QButtonGroup,
                              QVBoxLayout, QHBoxLayout, QFrame, QTableView,
-                             QListView, QTreeView)
+                             QListView, QTreeView, QAbstractItemView)
 
 from ui.ui_mainwindow import Ui_MainWindow
 from ui.CustomModelView.custommodel import CustomModel
+from ui.CustomModelView.horizontalHeaderView import HorizontalHeaderView
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -25,6 +26,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._list_view = QListView(self)
         self._tree_view = QTreeView(self)
         self._model = CustomModel(self)
+        self._sort_filter_model = QSortFilterProxyModel()
+        self._h_table_header = HorizontalHeaderView(self._table_view)
         self.init_ui()
         self.init_connect()
         self.init_qss()
@@ -59,15 +62,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.add_nav_h_line()
         self.add_nav_stack_widget("", "自绘控件", QWidget(self))
 
-        self._table_view.setModel(self._model)
+        self._table_view.setHorizontalHeader(self._h_table_header)
+        self._sort_filter_model.setSourceModel(self._model)
+        self._table_view.setModel(self._sort_filter_model)
         self._list_view.setModel(self._model)
         self._tree_view.setModel(self._model)
         self._table_view.setColumnWidth(1, 150)
         self._table_view.setAlternatingRowColors(True)
         self._table_view.horizontalHeader().setStretchLastSection(True)
+        self._table_view.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self._table_view.setSelectionMode(QAbstractItemView.SingleSelection)
 
     def init_connect(self):
         self._button_group_nav.buttonClicked.connect(self.on_btn_group_clicked)
+        self._table_view.pressed.connect(self.on_table_view_pressed)
+        self._h_table_header.sorted_up.connect(self.on_sort_up)
+        self._h_table_header.sorted_down.connect(self.on_sort_down)
+        self._h_table_header.filter.connect(self.on_filter)
+
+    def on_table_view_pressed(self, index: QModelIndex):
+        print('selected: ', index.row(), ' data: ', self._table_view.model().data(index))
+
+    def on_sort_up(self, index: int):
+        self._sort_filter_model.setFilterKeyColumn(index)
+        self._sort_filter_model.sort(index, Qt.AscendingOrder)
+
+    def on_sort_down(self, index: int):
+        self._sort_filter_model.setFilterKeyColumn(index)
+        self._sort_filter_model.sort(index, Qt.DescendingOrder)
+
+    def on_filter(self, index: int, msg: str):
+        self._sort_filter_model.setFilterKeyColumn(index)
+        self._sort_filter_model.setFilterFixedString(msg)
 
     def on_btn_group_clicked(self, obj):
         self.stackedWidget.setCurrentIndex(self._button_group_nav.id(obj))

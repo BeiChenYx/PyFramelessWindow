@@ -232,6 +232,10 @@ class FrameLessWidget(QtWidgets.QWidget, Ui_FramelessWidget):
             self._drag_left = True
             self._drag_bottom = True
             self.setCursor(Qt.SizeBDiagCursor)
+        elif self.right_border_hit(global_mouse_pos) and self.bottom_border_hit(global_mouse_pos):
+            self._drag_bottom = True
+            self._drag_right = True
+            self.setCursor(Qt.SizeFDiagCursor)
         else:
             if self.top_border_hit(global_mouse_pos):
                 self._drag_top = True
@@ -287,7 +291,7 @@ class FrameLessWidget(QtWidgets.QWidget, Ui_FramelessWidget):
                     self.setGeometry(global_mouse_pos.x(), self._start_geometry.y(), new_width, new_height)
             elif self._drag_bottom and self._drag_right:
                 new_height = global_mouse_pos.y() - self._start_geometry.y()
-                new_width = global_mouse_pos.y() - self._start_geometry.x()
+                new_width = global_mouse_pos.x() - self._start_geometry.x()
                 if new_height > self.minimumHeight() and new_width > self.minimumWidth():
                     self.resize(new_width, new_height)
             elif self._drag_top:
@@ -313,6 +317,8 @@ class FrameLessWidget(QtWidgets.QWidget, Ui_FramelessWidget):
                 self.setCursor(Qt.SizeBDiagCursor)
             elif self.left_border_hit(global_mouse_pos) and self.bottom_border_hit(global_mouse_pos):
                 self.setCursor(Qt.SizeBDiagCursor)
+            elif self.right_border_hit(global_mouse_pos) and self.bottom_border_hit(global_mouse_pos):
+                self.setCursor(Qt.SizeFDiagCursor)
             else:
                 if self.top_border_hit(global_mouse_pos):
                     self.setCursor(Qt.SizeVerCursor)

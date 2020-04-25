@@ -46,3 +46,24 @@ QSplitter::handle:vertical {
 QSplitter::handle:pressed {
     background-color: #c2c2c2;
 }
+
+CustomHeaderView #widget_header{
+	background-color:qlineargradient(x1:0,y1:1,x2:0,y2:0,stop:0 rgba(17,127,225, 1),stop:1 rgba(48,150,248, 0.5));;
+	border-right: 1px solid rgb(230, 230, 230);
+}
+#CustomHeaderView #widget_header QLabel{
+	color: rgb(255, 255, 255);
+}
+#CustomHeaderView #widget_header QToolButton{
+	background-color:none;
+  	border:none;
+}
+#CustomHeaderView #widget_header QToolButton:hover{
+	background-color: #2e9eea;
+}
+#CustomHeaderView #widget_header QToolButton:pressed{
+	background-color:palette(highlight);
+}
+#CustomHeaderView #widget_header QToolButton:checked{
+	background-color: #C2C2C2;
+}
