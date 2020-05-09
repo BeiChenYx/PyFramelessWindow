@@ -3,10 +3,12 @@
 	background-color: #ddedfa;
 }
 #widget_left_nav QToolButton{
-	color: 0xffffff;
+	color: #000000;
 	background-color: none;
     border:none;
     padding: 2px 2px 2px 2px;
+	min-height: 0px;
+    border-radius:0px;
 }
 #widget_left_nav QToolButton:checked{
 	color: #3096f8;
@@ -22,32 +24,28 @@
 	border-top: 1px solid #a0a0a0;
 }
 
-/* 状态栏 */
-QStatusBar{
-	background-color: #117ee0;
-}
-QStatusBar::item{
-    border: none;
-}
-/* 分裂器 */
-QSplitter::handle {
-	background-color: #117ee0;
+#CustomHorizontalHeaderView::section:horizontal{
 	border: none;
+	padding-left:5px;
+	padding-right:5px;
+	color: rgb(255, 255, 255);
 }
 
-QSplitter::handle:horizontal {
-    width: 8px;
+#CustomHorizontalHeaderView::section:!last{
+	border-right: 1px solid rgb(230, 230, 230);
 }
-
-QSplitter::handle:vertical {
-    height: 8px;
+#CustomTableView{
+	alternate-background-color: rgb(242,242,242);
+	background-color: rgb(255,255,255);
+	selection-background-color: #0078D7;
+	selection-color: #FAFAFA;
+	gridline-color: rgb(230, 230, 230);
+	border-top: none;
+	border-right: 1px solid rgb(230, 230, 230);
+	border-left: 1px solid rgb(230, 230, 230);
+	border-bottom: 1px solid rgb(230, 230, 230);
 }
-
-QSplitter::handle:pressed {
-    background-color: #c2c2c2;
-}
-
-CustomHeaderView #widget_header{
+#CustomHeaderView #widget_header{
 	background-color:qlineargradient(x1:0,y1:1,x2:0,y2:0,stop:0 rgba(17,127,225, 1),stop:1 rgba(48,150,248, 0.5));;
 	border-right: 1px solid rgb(230, 230, 230);
 }
@@ -66,4 +64,10 @@ CustomHeaderView #widget_header{
 }
 #CustomHeaderView #widget_header QToolButton:checked{
 	background-color: #C2C2C2;
+}
+#CustomHeaderView QToolButton{
+    min-height: 0px;
+    border-radius:0px;
+    padding:0px;
+    background-color: transparent;
 }

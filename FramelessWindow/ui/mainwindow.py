@@ -1,8 +1,5 @@
-from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from PyQt5.QtCore import Qt, QEvent, QRect, QPoint, QModelIndex, QSortFilterProxyModel
-from PyQt5.QtGui import QColor, QPalette
-from PyQt5.QtWidgets import (qApp, QWidget, QMainWindow,
+from PyQt5.QtWidgets import (qApp, QWidget, QMainWindow, QLabel, QComboBox,
                              QToolButton, QSizePolicy, QButtonGroup,
                              QVBoxLayout, QHBoxLayout, QFrame, QTableView,
                              QListView, QTreeView, QAbstractItemView)
@@ -10,35 +7,64 @@ from PyQt5.QtWidgets import (qApp, QWidget, QMainWindow,
 from ui.ui_mainwindow import Ui_MainWindow
 from ui.CustomModelView.custommodel import CustomModel
 from ui.CustomModelView.horizontalHeaderView import HorizontalHeaderView
+from ui.basicWidget import BasicWidget
+from ui.drawingControl import DrawingControl
+
+
+class VersionInfoWidget(QWidget):
+
+    def __init__(self, version='V1.0.0', parent=None):
+        super(VersionInfoWidget, self).__init__(parent)
+        self.setObjectName('customStatusBar')
+        h_layout = QHBoxLayout()
+        label = QLabel(version)
+        h_layout.addWidget(label)
+        h_layout.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(h_layout)
+        self.setStyleSheet("#customStatusBar QLabel{color: #FFFFFF;}")
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
     def __init__(self, parent=None):
+        # 框架 --start
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self._left_nav_btn_list = list()
         self._nav_v_layout = QVBoxLayout()
         self._nav_v_layout.setContentsMargins(0, 0, 0, 0)
         self._button_group_nav = QButtonGroup(self)
-        self._widget_base = QWidget(self)
+        self._version_widget = VersionInfoWidget('版本号: V1.0.0')
+        # 框架 --end
+
+        self._basic_widget = BasicWidget(self)
         self._table_view = QTableView(self)
         self._list_view = QListView(self)
         self._tree_view = QTreeView(self)
         self._model = CustomModel(self)
         self._sort_filter_model = QSortFilterProxyModel()
         self._h_table_header = HorizontalHeaderView(self._table_view)
+        self._drawing_control = DrawingControl(self)
+
+        # 框架 --start
         self.init_ui()
         self.init_connect()
         self.init_qss()
+        # 框架 --end
 
     def init_ui(self):
+        # 框架 --start
         h_layout = QVBoxLayout()
         h_layout.addLayout(self._nav_v_layout)
         h_layout.addStretch()
         h_layout.setContentsMargins(0, 0, 0, 0)
         self.widget_left_nav.setLayout(h_layout)
-        self.add_nav_stack_widget('', '控件', self._widget_base)
+        self.statusbar.addPermanentWidget(self._version_widget)
+        for combo_box in self.findChildren(QComboBox):
+            combo_box.setView(QListView())
+        # 框架 --end
+
+        self.add_nav_stack_widget('', '基本控件', self._basic_widget)
         self.add_nav_h_line()
 
         table_widget = QWidget(self);
@@ -60,7 +86,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.add_nav_stack_widget("treeBtn", "treeView", tree_widget)
 
         self.add_nav_h_line()
-        self.add_nav_stack_widget("", "自绘控件", QWidget(self))
+        self.add_nav_stack_widget("", "自绘控件", self._drawing_control)
 
         self._table_view.setHorizontalHeader(self._h_table_header)
         self._sort_filter_model.setSourceModel(self._model)
