@@ -300,10 +300,28 @@ QScrollBar::handle:pressed{
 	background-color: #177fd8;
 }
 
-QTextBrower,
-QTextEdit{
+QTreeWidget{
 	border: none;
-	background-color: rgba(255, 255, 255, 0.9);;
+	background-color: rgb(210, 233, 251);
+}
+QTreeWidget::item {
+     border:  none;
+	color: #000000;
+	margin-left: -5px;
+	background-color: transparent;
+}
+QTreeWidget::branch {
+	background-color: transparent;
+}
+QTreeWidget::branch:has-children:!has-siblings:closed,
+QTreeWidget::branch:closed:has-children:has-siblings {
+    border-image: none;
+	image: url(:/images/add.png);
+}
+QTreeWidget::branch:open:has-children:!has-siblings,
+QTreeWidget::branch:open:has-children:has-siblings  {
+     border-image: none;
+	image: url(:/images/sub.png);
 }
 
 QTabWidget::pane { /* The tab widget frame */
@@ -353,6 +371,51 @@ QTabBar QToolButton::right-arrow { /* the arrow mark in the tool buttons */
 
 QTabBar QToolButton::left-arrow {
 	border-image: url(:/images/caret-left.png);
+}
+
+/* QTreeView和QTreeWidget */
+QTreeView{
+	border: none;
+	background-color: transparent;
+}
+QTreeView::item {
+    border: none;
+	color: #000000;
+	margin-left: -5px;
+	background-color: transparent;
+}
+
+QTreeView::branch,
+QTreeView::branch:has-siblings:!adjoins-item,
+QTreeView::branch:has-siblings:adjoins-item,
+QTreeView::branch:!has-children:!has-siblings:adjoins-item{
+    background-color: transparent;
+}
+/* 要调节加减号和字体间的间隔，在UI中调节indentation值, 设置14比较好 */
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings {
+    border-image: none;
+	image: url(:/images/add.png) 0;
+	background-color: transparent;
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings {
+    border-image: none;
+	image: url(:/images/sub.png) 0;
+	background-color: transparent;
+}
+QTreeView::item:selected {
+     border: none;
+}
+QTreeView::branch:closed:selected:active,
+QTreeView::branch:open:selected:active,
+QTreeView::item:selected:active{
+     background-color:palette(highlight);
+}
+QTreeView::branch:closed:selected:!active,
+QTreeView::branch:open:selected:!active,
+QTreeView::item:selected:!active {
+     background: lightgray;
 }
 
 /* 本窗口的样式 */

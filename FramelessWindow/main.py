@@ -1,4 +1,4 @@
-"""
+﻿"""
 无边框的自定义框架
 """
 import sys
@@ -6,7 +6,7 @@ import qt_ui
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTranslator
 from ui.FrameLessWidget.frameLessWidget import FrameLessWidget
-from  ui.mainwindow import MainWindow
+from ui.mainwindow import MainWindow
 
 
 def main():

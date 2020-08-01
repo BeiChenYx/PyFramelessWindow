@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>713</width>
-    <height>593</height>
+    <width>653</width>
+    <height>555</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,9">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -43,14 +43,8 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>60</width>
+        <width>100</width>
         <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>16777215</height>
        </size>
       </property>
      </widget>
