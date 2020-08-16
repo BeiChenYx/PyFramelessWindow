@@ -300,30 +300,6 @@ QScrollBar::handle:pressed{
 	background-color: #177fd8;
 }
 
-QTreeWidget{
-	border: none;
-	background-color: rgb(210, 233, 251);
-}
-QTreeWidget::item {
-     border:  none;
-	color: #000000;
-	margin-left: -5px;
-	background-color: transparent;
-}
-QTreeWidget::branch {
-	background-color: transparent;
-}
-QTreeWidget::branch:has-children:!has-siblings:closed,
-QTreeWidget::branch:closed:has-children:has-siblings {
-    border-image: none;
-	image: url(:/images/add.png);
-}
-QTreeWidget::branch:open:has-children:!has-siblings,
-QTreeWidget::branch:open:has-children:has-siblings  {
-     border-image: none;
-	image: url(:/images/sub.png);
-}
-
 QTabWidget::pane { /* The tab widget frame */
    	background-color: transparent;
 	border: 1px solid gray;

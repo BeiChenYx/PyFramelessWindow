@@ -51,13 +51,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #     }
         # }
         self._left_nav_tree_dict = dict()
+        self._nav_tree_widget = QTreeWidget(self)
         self._nav_v_layout = QVBoxLayout()
         self._nav_v_layout.setContentsMargins(0, 0, 0, 0)
         self._button_group_nav = QButtonGroup(self)
         self._version_widget = VersionInfoWidget('版本号: V1.0.0')
         # 框架 --end
 
-        self._nav_tree_widget = QTreeWidget(self)
 
         self._basic_widget = BasicWidget(self)
         self._table_view = QTableView(self)
