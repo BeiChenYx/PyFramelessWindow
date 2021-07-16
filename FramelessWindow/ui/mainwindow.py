@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (qApp, QWidget, QMainWindow, QLabel, QComboBox, QLin
 
 from ui.ui_mainwindow import Ui_MainWindow
 from ui.CustomModelView.custommodel import CustomModel
+from ui.CustomModelView.ctree_model import CTreeModel
 from ui.CustomModelView.horizontalHeaderView import HorizontalHeaderView
 from ui.basicWidget import BasicWidget
 from ui.drawingControl import DrawingControl
@@ -64,6 +65,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._list_view = QListView(self)
         self._tree_view = QTreeView(self)
         self._model = CustomModel(self)
+        self._tree_model = CTreeModel(self)
         self._sort_filter_model = QSortFilterProxyModel()
         self._h_table_header = HorizontalHeaderView(self._table_view)
         self._drawing_control = DrawingControl(self)
@@ -130,7 +132,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._sort_filter_model.setSourceModel(self._model)
         self._table_view.setModel(self._sort_filter_model)
         self._list_view.setModel(self._model)
-        self._tree_view.setModel(self._model)
+        # self._tree_view.setModel(self._model)
+        self._tree_view.setModel(self._tree_model)
         self._table_view.setColumnWidth(1, 150)
         self._table_view.setAlternatingRowColors(True)
         self._table_view.horizontalHeader().setStretchLastSection(True)
