@@ -153,12 +153,6 @@ class CTreeModel(QAbstractItemModel):
         return self.createIndex(parent_item.row_number_in_parent(),
                                 0, parent_item)
 
-    def flags(self, index: QModelIndex) -> Qt.ItemFlags:
-        if index.isValid():
-            _flags = Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemNeverHasChildren | Qt.ItemIsEditable
-            return _flags
-        return QAbstractItemModel.flags(index)
-
     def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.DisplayRole):
         if role != Qt.DisplayRole:
             return QVariant()
